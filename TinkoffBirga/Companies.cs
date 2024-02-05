@@ -9,13 +9,13 @@ namespace TinkoffBirga
     internal class Companies
     {
         int companyID;
-        static int IDCounter = 0;
+        static int IDCounter = 1;
         string nameCompany;
         string legalAddress;
         string email;
         string INN;
 
-        public int CompanyID { get => companyID; set => companyID = value; }
+        public int CompanyID { get => companyID; }
         public string NameCompany { get => nameCompany; set => nameCompany = value; }
         public string LegalAddress { get => legalAddress; set => legalAddress = value; }
         public string Email { get => email; set => email = value; }
@@ -23,21 +23,12 @@ namespace TinkoffBirga
 
         public Companies(string nameCompany, string legalAddress, string email, string INN)
         {
-            this.CompanyID = IDCounter;
-            this.NameCompany = nameCompany;
-            this.LegalAddress = legalAddress;
-            this.Email = email;
-            this.INN = INN;
+            this.companyID = IDCounter;
             IDCounter++;
-        }
-
-        public Companies()
-        {
-            this.CompanyID = -1;
-            this.NameCompany = null;
-            this.LegalAddress = null;
-            this.Email = null;
-            this.INN = null;
+            this.nameCompany = nameCompany;
+            this.legalAddress = legalAddress;
+            this.email = email;
+            this.INN = INN;
         }
     }
 }

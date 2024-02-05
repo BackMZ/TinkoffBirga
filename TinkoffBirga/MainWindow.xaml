@@ -7,7 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Кнопка" Margin="350,190,350,190" Click="Button_Click"/>
+        <Button Content="Кнопка" Margin="316,190,316,190" Click="Button_Click"/>
+        <Button Content="Увеличить цену на 20" RenderTransformOrigin="0.5,0.5" Margin="316,280,316,99" Click="Button_Click_1">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Уменьшить цену на 20" RenderTransformOrigin="0.5,0.5" Margin="316,361,316,18" Click="Button_Click_2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 </Window>

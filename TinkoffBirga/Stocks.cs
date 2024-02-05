@@ -9,14 +9,19 @@ namespace TinkoffBirga
     internal class Stocks
     {
         int stockID;
-        static int stockIDCounter = 0;  // переменная для присвоения id переменной stockID (удалить, если это делается в БД)
+        static int stockIDCounter = 1;  // переменная для присвоения id переменной stockID (удалить, если это делается в БД)
 
         int companyID;
         string nameCompany;
         int cost;  // цена акции
         int dynamic;  // переменная для сохранения изменения цены (за определённый период)
 
-        Stocks(int companyID, string nameCompany, int cost)
+        public int CompanyID { get => companyID;}
+        public string NameCompany { get => nameCompany; set => nameCompany = value; }
+        public int Cost { get => cost; }
+        public int Dynamic { get => dynamic; }
+
+        public Stocks(int companyID, string nameCompany, int cost)
         {
             stockID = stockIDCounter;
             stockIDCounter++;
@@ -30,6 +35,13 @@ namespace TinkoffBirga
         // метод установки новой цены акции
         public void SetCost(int newCost)
         {
+            CalculateDynamic(newCost);
+            cost = newCost;
+        }
+
+        public void ChangeCost(int costChange)
+        {
+            int newCost = cost + costChange;
             CalculateDynamic(newCost);
             cost = newCost;
         }
