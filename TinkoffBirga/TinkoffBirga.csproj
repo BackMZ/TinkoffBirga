@@ -57,7 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Companies.cs" />
     <Compile Include="Deals.cs" />
-    <Compile Include="StockExchange.cs" />
+    <Compile Include="Stocks.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

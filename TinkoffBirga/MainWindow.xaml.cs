@@ -25,5 +25,13 @@ namespace TinkoffBirga
         {
             InitializeComponent();
         }
+
+        Companies Sber = new Companies("Сбер", "Вологда", "sber@ya.ru", "1234567890");
+        Stocks SberStock = new Stocks(Sber.NameCompany, 100);
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
