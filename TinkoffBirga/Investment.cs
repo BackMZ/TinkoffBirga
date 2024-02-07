@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TinkoffBirga
 {
-    internal class Deals
+    internal class Investment
     {
-        int dealID;
 
-        public int DealID { get => dealID; }
     }
 }

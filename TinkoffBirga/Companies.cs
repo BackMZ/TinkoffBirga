@@ -25,6 +25,7 @@ namespace TinkoffBirga
         {
             this.companyID = IDCounter;
             IDCounter++;
+
             this.nameCompany = nameCompany;
             this.legalAddress = legalAddress;
             this.email = email;
