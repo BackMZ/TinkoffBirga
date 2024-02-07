@@ -15,6 +15,7 @@ namespace TinkoffBirga
         string nameCompany;
         int cost; // цена акции
         int dynamic; // переменная для сохранения изменения цены (на данный момент это последнее изменение цены)
+        bool dynamicsDirection; // true - цена увеличивается, false - цена уменьшается
 
         public int CompanyID { get => companyID;}
         public string NameCompany { get => nameCompany; set => nameCompany = value; }
@@ -30,27 +31,52 @@ namespace TinkoffBirga
             this.nameCompany = nameCompany;
             this.cost = cost;
             dynamic = 0;
+            dynamicsDirection = true;
         }
 
-        // метод установки новой цены акции
-        public void SetCost(int newCost)
+        // метод для изменения цены
+        public void ChangeCost(int newCost)
         {
-            CalculateDynamic(newCost);
+            int costChange = newCost - cost;
+            CalculateDynamic(newCost, costChange);
             cost = newCost;
         }
 
-        public void ChangeCost(int costChange)
+        // метод вычисления изменения динамики цены
+        void CalculateDynamic(int newCost, int costChange)
         {
-            int newCost = cost + costChange;
-            CalculateDynamic(newCost);
-            cost = newCost;
+            if (newCost > cost && dynamicsDirection == true)
+            {
+                IncreaseDynamics(newCost);
+            }
+            else if (newCost > cost && dynamicsDirection == false)
+            {
+                dynamic = 0;
+                IncreaseDynamics(newCost);
+                dynamicsDirection = true;
+            }
+            else if (newCost < cost && dynamicsDirection == false)
+            {
+                reduceDynamics(newCost);
+            }
+            else if (newCost < cost && dynamicsDirection == true)
+            {
+                dynamic = 0;
+                reduceDynamics(newCost);
+                dynamicsDirection = false;
+            }
         }
 
-        // метод вычисления изменения цены
-        void CalculateDynamic(int newCost)
+        // метод увеличения динамики цены
+        void IncreaseDynamics(int newCost)
         {
-            dynamic = newCost - cost;
+            dynamic += newCost - cost;
         }
 
+        // метод уменьшения динамики цены
+        void reduceDynamics(int newCost)
+        {
+            dynamic += newCost - cost;
+        }
     }
 }
